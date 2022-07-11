@@ -1,21 +1,6 @@
 version: '3.7'
 
 services:
-    app:
-        container_name: pizza_app
-        build:
-            context: .
-            target: development
-        volumes:
-            - .:/app
-            - /app/node_modules
-        ports:
-            - '0.0.0.0:${HOST_PORT}:${HOST_PORT}'
-        command: npm run start:dev
-        env_file:
-            - .env
-        depends_on:
-            - postgres
     postgres:
         container_name: pizza_postgres
         image: postgres:13.1-alpine
