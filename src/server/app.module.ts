@@ -1,8 +1,9 @@
+import {OrderType} from "./../order/entity/orderType.entity";
 import {Module} from "@nestjs/common";
-import {UserModule} from "src/user/user.module";
+import {UserModule} from "./../user/user.module";
 
 @Module({
-	imports: [UserModule],
+	imports: [UserModule, OrderType],
 	controllers: [],
 	providers: [],
 })

@@ -14,10 +14,10 @@ export class User {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column({name: `second_name`, nullable: false})
+	@Column({name: `second_name`, nullable: true})
 	secondName: string;
 
-	@Column({name: `first_name`, nullable: false})
+	@Column({name: `first_name`, nullable: true})
 	firstName: string;
 
 	@Column({name: `last_name`, nullable: true})

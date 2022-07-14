@@ -25,7 +25,7 @@ async function addInDatabase(t: {name: string}, connection: Connection) {
 	else console.log(`Role "${role.name}" already exist`);
 }
 
-console.log(`[Role.seed.ts] Start`);
+console.log(`[role.seed.ts] Start`);
 const time = Date.now();
 
 createConnection({
@@ -41,7 +41,7 @@ createConnection({
 	.then(async connection => {
 		for (const role of roles) await addInDatabase(role, connection);
 		console.log(
-			`[Role.seed.ts] Success (${Math.round((Date.now() - time) / 1000)}s)`
+			`[role.seed.ts] Success (${Math.round((Date.now() - time) / 1000)}s)`
 		);
 	})
-	.catch(error => console.log(`[Role.seed.ts] Error: ${error}`));
+	.catch(error => console.log(`[role.seed.ts] Error: ${error}`));
