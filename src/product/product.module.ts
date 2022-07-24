@@ -8,6 +8,6 @@ import {ProductService} from "./product.service";
 	imports: [DatabaseModule, TypeOrmModule.forFeature([Product])],
 	providers: [ProductService],
 	controllers: [],
-	exports: [],
+	exports: [ProductService],
 })
 export class ProductModule {}

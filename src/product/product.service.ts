@@ -43,6 +43,14 @@ export class ProductService {
 		return await this.productRepository.save(oldProduct);
 	}
 
+	async delete(id: number) {
+		const product = await this.findOneById(id);
+
+		if (!product) throw new HttpException(`Product not found`, HttpStatus.NOT_FOUND);
+
+		return await this.productRepository.remove(product);
+	}
+
 	/**
 	 * It returns a product by its id
 	 * @param {number} id - number - The id of the product we want to find.
@@ -54,7 +62,11 @@ export class ProductService {
 		return product;
 	}
 
-	async getAll() {
+	/**
+	 * It returns a promise that resolves to an array of products
+	 * @returns An array of products
+	 */
+	async findAll() {
 		const products = await this.productRepository.find();
 
 		return products;

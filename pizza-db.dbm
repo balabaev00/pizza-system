@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="2,0" last-zoom="0.75" max-obj-count="19"
+<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="0,0" last-zoom="0.75" max-obj-count="19"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -226,7 +226,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.employees"
 	 src-required="false" dst-required="false"/>
 
-<table name="pizza" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+<table name="pizzas" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1141.25" y="257.5"/>
@@ -236,24 +236,24 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="price">
 		<type name="smallint" length="0"/>
 	</column>
-	<constraint name="pizza_pk" type="pk-constr" table="public.pizza">
+	<constraint name="pizza_pk" type="pk-constr" table="public.pizzas">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 
 	<customidxs object-type="column">
 		<object name="id_pizza_info" index="3"/>
 		<object name="id_pizza_sizes" index="2"/>
-		<object name="id_test_types" index="4"/>
+		<object name="id_pizza_test_types" index="4"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
 		<object name="pizza_info_fk" index="1"/>
 		<object name="pizza_sizes_fk" index="2"/>
-		<object name="test_types_fk" index="3"/>
+		<object name="pizza_test_types_fk" index="3"/>
 	</customidxs>
 </table>
 
-<table name="test_types" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+<table name="pizza_test_types" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="900.75" y="633"/>
@@ -263,7 +263,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="name" not-null="true">
 		<type name="varchar" length="255"/>
 	</column>
-	<constraint name="test_type_pk" type="pk-constr" table="public.test_types">
+	<constraint name="test_type_pk" type="pk-constr" table="public.pizza_test_types">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -273,8 +273,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#b39ca4"
-	 src-table="public.test_types"
-	 dst-table="public.pizza"
+	 src-table="public.pizza_test_types"
+	 dst-table="public.pizzas"
 	 src-required="false" dst-required="false">
 	<label ref-type="name-label">
 		<position x="0" y="0"/>
@@ -302,7 +302,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#ab9a20"
 	 src-table="public.pizza_sizes"
-	 dst-table="public.pizza"
+	 dst-table="public.pizzas"
 	 src-required="false" dst-required="false"/>
 
 <table name="products_and_pizzes" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
@@ -320,12 +320,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 
 	<customidxs object-type="column">
-		<object name="id_pizza" index="2"/>
+		<object name="id_pizzas" index="2"/>
 		<object name="id_product" index="1"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
-		<object name="pizza_fk" index="2"/>
+		<object name="pizzas_fk" index="2"/>
 		<object name="product_fk" index="1"/>
 	</customidxs>
 </table>
@@ -344,7 +344,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#efa061"
-	 src-table="public.pizza"
+	 src-table="public.pizzas"
 	 dst-table="public.products_and_pizzes"
 	 src-required="true" dst-required="false"/>
 
@@ -370,12 +370,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 	<customidxs object-type="column">
 		<object name="id_categories" index="1"/>
-		<object name="id_pizza" index="0"/>
+		<object name="id_pizzas" index="0"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
 		<object name="categories_fk" index="1"/>
-		<object name="pizza_fk" index="0"/>
+		<object name="pizzas_fk" index="0"/>
 	</customidxs>
 </table>
 
@@ -384,7 +384,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#bede11"
-	 src-table="public.pizza"
+	 src-table="public.pizzas"
 	 dst-table="public.pizzas_and_categories"
 	 src-required="false" dst-required="false"/>
 
@@ -428,7 +428,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#3ec35b"
 	 src-table="public.pizza_info"
-	 dst-table="public.pizza"
+	 dst-table="public.pizzas"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
