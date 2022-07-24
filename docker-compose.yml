@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
     postgres:
-        container_name: pizza_postgres
+        container_name: pizz_postgres
         image: postgres:13.1-alpine
         environment:
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -14,7 +14,7 @@ services:
         volumes:
             - pgdata:/var/lib/postgresql/data
     pgadmin:
-        container_name: pizza_pgadmin
+        container_name: pizz_pgadmin
         image: dpage/pgadmin4
         restart: always
         environment:

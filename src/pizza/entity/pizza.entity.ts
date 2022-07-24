@@ -1,10 +1,10 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
-@Entity({name: `order_types`})
-export class OrderType {
+@Entity({name: `pizzas`})
+export class Pizza {
 	@PrimaryGeneratedColumn()
 	id: number;
 
 	@Column()
-	name: string;
+	price: number;
 }
