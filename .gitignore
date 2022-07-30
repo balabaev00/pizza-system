@@ -38,3 +38,4 @@ lerna-debug.log*
 .env
 ormconfig.json
 .gitignore
+ormlogs.log

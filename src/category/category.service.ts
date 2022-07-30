@@ -41,6 +41,10 @@ export class CategoryService {
 		return category;
 	}
 
+	/**
+	 * It returns a list of all categories
+	 * @returns An array of categories
+	 */
 	async findAll() {
 		const categories = await this.categoryRepository.find();
 

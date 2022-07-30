@@ -1,9 +1,10 @@
 import {ApiProperty} from "@nestjs/swagger";
-import {IsNotEmpty, IsString} from "class-validator";
+import {IsDefined, IsNotEmpty, IsString} from "class-validator";
 import {Category} from "../entity/category.entity";
 
 export class CategoryDto {
 	@IsNotEmpty()
+	@IsDefined()
 	@IsString()
 	@ApiProperty({
 		description: `Category name`,
@@ -26,7 +27,7 @@ export class CreateCategoryReturn201 {
 			name: `Мясные`,
 		},
 	})
-	category: {};
+	category: Category; // TODO Спросить как решить это
 
 	@ApiProperty({
 		description: `Status code`,

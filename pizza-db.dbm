@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="0,0" last-zoom="0.75" max-obj-count="19"
+<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="0,235" last-zoom="0.75" max-obj-count="19"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -137,7 +137,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="varchar" length="255"/>
 	</column>
 	<column name="entrance">
-		<type name="smallint" length="0"/>
+		<type name="varchar" length="20"/>
 	</column>
 	<column name="floor">
 		<type name="smallint" length="0"/>
@@ -148,6 +148,14 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<constraint name="address_pk" type="pk-constr" table="public.address">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_cities" index="5"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="cities_fk" index="1"/>
+	</customidxs>
 </table>
 
 <relationship name="address_has_many_pizzeria" type="rel1n" layer="0"
