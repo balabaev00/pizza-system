@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="0,0" last-zoom="0.75" max-obj-count="19"
+<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="0,135" last-zoom="0.75" max-obj-count="20"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -55,7 +55,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<table name="orders" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+<table name="orders" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="713" y="894.583"/>
@@ -192,7 +192,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="order_types" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="712.5" y="1137.5"/>
+	<position x="736.5" y="1237.5"/>
 	<column name="id" not-null="true">
 		<type name="smallint" length="0"/>
 	</column>
@@ -438,5 +438,33 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-table="public.pizza_info"
 	 dst-table="public.pizzas"
 	 src-required="false" dst-required="false"/>
+
+<table name="order_statuses" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1162.67" y="1165.33"/>
+	<column name="id" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="order_statuses_pk" type="pk-constr" table="public.order_statuses">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="order_statuses_has_many_orders" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#42c474"
+	 src-table="public.order_statuses"
+	 dst-table="public.orders"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="99.2121" y="3.10812"/>
+	</label>
+</relationship>
 
 </dbmodel>

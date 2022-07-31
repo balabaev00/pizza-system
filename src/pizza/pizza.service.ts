@@ -17,7 +17,7 @@ export class PizzaService {
 	 * It returns a list of pizza sizes
 	 * @returns An array of pizza sizes.
 	 */
-	async getPizzaSizes() {
+	async findAllPizzaSizes() {
 		const pizzaSizes = await this.pizzaSizesRepository.find();
 
 		return pizzaSizes;
@@ -47,12 +47,17 @@ export class PizzaService {
 	 * It returns a list of all the pizza dough types
 	 * @returns An array of pizza dough types.
 	 */
-	async getPizzaDoughTypes() {
+	async findAllPizzaDoughTypes() {
 		const pizzaDoughTypes = await this.pizzaDoughTypesRepository.find();
 
 		return pizzaDoughTypes;
 	}
 
+	/**
+	 * It saves a new pizza dough type to the database
+	 * @param {string} nameOfDoughType - string - this is the name of the dough type that we want to save.
+	 * @returns The new pizza dough type is being returned.
+	 */
 	async savePizzaDoughType(nameOfDoughType: string) {
 		const oldDoughType = await this.pizzaDoughTypesRepository.findOne({
 			name: nameOfDoughType,
