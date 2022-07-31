@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="0,235" last-zoom="0.75" max-obj-count="19"
+<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="0,0" last-zoom="0.75" max-obj-count="19"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -249,19 +249,19 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 
 	<customidxs object-type="column">
+		<object name="id_pizza_dough_types" index="4"/>
 		<object name="id_pizza_info" index="3"/>
 		<object name="id_pizza_sizes" index="2"/>
-		<object name="id_pizza_test_types" index="4"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
+		<object name="pizza_dough_types_fk" index="3"/>
 		<object name="pizza_info_fk" index="1"/>
 		<object name="pizza_sizes_fk" index="2"/>
-		<object name="pizza_test_types_fk" index="3"/>
 	</customidxs>
 </table>
 
-<table name="pizza_test_types" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+<table name="pizza_dough_types" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="900.75" y="633"/>
@@ -271,7 +271,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="name" not-null="true">
 		<type name="varchar" length="255"/>
 	</column>
-	<constraint name="test_type_pk" type="pk-constr" table="public.pizza_test_types">
+	<constraint name="test_type_pk" type="pk-constr" table="public.pizza_dough_types">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -281,7 +281,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#b39ca4"
-	 src-table="public.pizza_test_types"
+	 src-table="public.pizza_dough_types"
 	 dst-table="public.pizzas"
 	 src-required="false" dst-required="false">
 	<label ref-type="name-label">
@@ -412,7 +412,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="pizza_info" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1548" y="244"/>
+	<position x="1612" y="242.667"/>
 	<column name="id" not-null="true">
 		<type name="smallint" length="0"/>
 	</column>
