@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="0,135" last-zoom="0.75" max-obj-count="20"
+<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="0,312" last-zoom="0.75" max-obj-count="22"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -466,5 +466,67 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<position x="99.2121" y="3.10812"/>
 	</label>
 </relationship>
+
+<table name="codes" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="250.667" y="1156"/>
+	<column name="id" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="isActive" not-null="true">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="created_at" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="codes_pk" type="pk-constr" table="public.codes">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_codes_owners" index="4"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="codes_owners_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="codes_owners" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="22.6667" y="798.667"/>
+	<column name="id" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="first_name" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="last_name" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="middle_name">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="phone_number">
+		<type name="varchar" length="20"/>
+	</column>
+	<constraint name="codes_owners_pk" type="pk-constr" table="public.codes_owners">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="codes_owners_has_many_codes" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#55c960"
+	 src-table="public.codes_owners"
+	 dst-table="public.codes"
+	 src-required="false" dst-required="false"/>
 
 </dbmodel>
